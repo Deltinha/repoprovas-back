@@ -27,7 +27,8 @@
       "error",
       { "devDependencies": ["*/tests/**"] }
     ],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "import/resolver": {
