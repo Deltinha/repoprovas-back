@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import ClassToProfessor from './ClassToProfessor';
+import Exam from './Exam';
 
 @Entity('professors')
 export default class Professor {
@@ -9,10 +9,14 @@ export default class Professor {
   @Column()
   name: string;
 
-  @OneToMany(
-    () => ClassToProfessor,
-    (classToProfessor: any) => classToProfessor.professor,
-    { eager: true }
-  )
-  classToProfessors: ClassToProfessor;
+  @OneToMany(() => Exam, (exam) => exam.professor)
+  exams: Promise<Exam[]>;
+
+  async getProfessors() {
+    return {
+      id: this.id,
+      name: this.name,
+      examsQty: (await this.exams).length,
+    };
+  }
 }

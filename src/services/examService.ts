@@ -35,8 +35,4 @@ export async function examBodyValidation(exam: any) {
   if (!type) {
     throw new NotFoundError('exam type does not exist');
   }
-  return {
-    ...exam,
-    classProfessorId: classProfessor.id,
-  };
 }

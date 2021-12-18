@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as professorService from '../services/professorService';
 
-// eslint-disable-next-line import/prefer-default-export
 export async function getProfessors(
   req: Request,
   res: Response,
