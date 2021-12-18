@@ -34,7 +34,7 @@ export async function examBodyValidation(exam: any) {
     where: { id: exam.typeId },
   });
 
-  if (Object.keys(type).length === 0) {
+  if (!type) {
     throw new NotFoundError('exam type does not exist');
   }
   return {
