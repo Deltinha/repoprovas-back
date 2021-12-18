@@ -23,7 +23,17 @@ export default class Class {
 
   @OneToMany(
     () => ClassToProfessor,
-    (classToProfessor) => classToProfessor.professor
+    (classToProfessor) => classToProfessor.class,
+    { eager: true }
   )
-  professors: ClassToProfessor;
+  classToProfessor: ClassToProfessor;
+
+  getClasses() {
+    return {
+      id: this.id,
+      name: this.name,
+      year: this.year,
+      classToProfessors: this.classToProfessor,
+    };
+  }
 }

@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  Column,
+  JoinColumn,
+} from 'typeorm';
 import Class from './Class';
 import Professor from './Professor';
 
@@ -7,19 +13,17 @@ export default class ClassToProfessor {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Class, (_class) => _class.id, { eager: true })
+  @Column({ name: 'professor_id' })
+  professorId: number;
+
+  @Column({ name: 'class_id' })
+  classId: number;
+
+  @ManyToOne(() => Class, (_class) => _class.id)
   @JoinColumn({ name: 'class_id' })
   class: Class;
 
-  @ManyToOne(() => Professor, (professor: any) => professor.id, { eager: true })
+  @ManyToOne(() => Professor, (professor: any) => professor.classes)
   @JoinColumn({ name: 'professor_id' })
   professor: Professor;
-
-  // getClassesProfessors() {
-  //   return {
-  //     id: this.id,
-  //     classId: this.class.id,
-  //     professorId: this.professor.id,
-  //   };
-  // }
 }

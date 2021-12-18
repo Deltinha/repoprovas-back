@@ -10,8 +10,8 @@ describe('examService test suit', () => {
       link: `${faker.internet.url()}/${faker.system.commonFileName('pdf')}`,
     };
 
-    const response = examService.examBodyValidation(exam);
-    await expect(response).rejects.toThrow(SyntaxError);
+    const promise = examService.examBodyValidation(exam);
+    await expect(promise).rejects.toThrow(SyntaxError);
   });
   it('should throw UnprocessableEntityError if the given combination of class/ professor does not exist', () => {
     expect(200).toBe(200);

@@ -11,7 +11,8 @@ export default class Professor {
 
   @OneToMany(
     () => ClassToProfessor,
-    (classToProfessor: any) => classToProfessor.class
+    (classToProfessor: any) => classToProfessor.professor,
+    { eager: true }
   )
-  classes: ClassToProfessor;
+  classToProfessors: ClassToProfessor;
 }

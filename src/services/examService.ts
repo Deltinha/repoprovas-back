@@ -6,6 +6,8 @@ import NotFoundError from '../errors/NotFoundError';
 import SyntaxError from '../errors/SyntaxError';
 
 export async function uploadExam(exam: any) {
+  console.log(exam);
+
   await getRepository(Exam).insert(exam);
 }
 
@@ -19,9 +21,10 @@ export async function examBodyValidation(exam: any) {
   ) {
     throw new SyntaxError('missing property in request body');
   }
+
   // joi aqui
   const classProfessor = await getRepository(ClassToProfessor).findOne({
-    where: { class: exam.classId, professor: exam.professorId },
+    where: { classId: exam.classId, professorId: exam.professorId },
   });
 
   if (Object.keys(classProfessor).length === 0)
@@ -32,6 +35,7 @@ export async function examBodyValidation(exam: any) {
   const type = await getRepository(Type).findOne({
     where: { id: exam.typeId },
   });
+
   if (Object.keys(type).length === 0) {
     throw new NotFoundError('exam type does not exist');
   }
