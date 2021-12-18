@@ -6,8 +6,6 @@ import NotFoundError from '../errors/NotFoundError';
 import SyntaxError from '../errors/SyntaxError';
 
 export async function uploadExam(exam: any) {
-  console.log(exam);
-
   await getRepository(Exam).insert(exam);
 }
 
@@ -27,7 +25,7 @@ export async function examBodyValidation(exam: any) {
     where: { classId: exam.classId, professorId: exam.professorId },
   });
 
-  if (Object.keys(classProfessor).length === 0)
+  if (!classProfessor)
     throw new NotFoundError(
       'given combination of professor and class does not exists'
     );
