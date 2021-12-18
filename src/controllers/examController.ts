@@ -14,8 +14,6 @@ export async function postExam(
 
     return res.sendStatus(201);
   } catch (err) {
-    console.log('aaa');
-
     if (err instanceof SyntaxError) {
       return res.sendStatus(400);
     }
