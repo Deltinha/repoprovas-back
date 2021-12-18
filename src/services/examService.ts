@@ -3,7 +3,6 @@ import ClassToProfessor from '../entities/ClassToProfessor';
 import Exam from '../entities/Exam';
 import Type from '../entities/Type';
 import NotFoundError from '../errors/NotFoundError';
-import SyntaxError from '../errors/SyntaxError';
 
 export async function uploadExam(exam: any) {
   await getRepository(Exam).insert(exam);
@@ -16,9 +15,8 @@ export async function examBodyValidation(exam: any) {
     !exam.professorId ||
     !exam.typeId ||
     !exam.link
-  ) {
+  )
     throw new SyntaxError('missing property in request body');
-  }
 
   // joi aqui
   const classProfessor = await getRepository(ClassToProfessor).findOne({

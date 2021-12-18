@@ -9,10 +9,14 @@ export async function postExam(
 ) {
   try {
     const exam = await examService.examBodyValidation(req.body);
+
     await examService.uploadExam(exam);
+
     return res.sendStatus(201);
   } catch (err) {
-    if (err.name === 'SyntaxError') {
+    console.log('aaa');
+
+    if (err instanceof SyntaxError) {
       return res.sendStatus(400);
     }
     if (err.name === 'NotFoundError') {

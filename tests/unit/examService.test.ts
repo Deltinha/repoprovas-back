@@ -1,6 +1,5 @@
 import faker from 'faker';
 import * as examService from '../../src/services/examService';
-import SyntaxError from '../../src/errors/SyntaxError';
 
 describe('examService test suit', () => {
   it('should throw SyntaxError if there is a property missing in exam`s body', async () => {
