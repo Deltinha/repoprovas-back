@@ -46,3 +46,13 @@ export async function getExamsFromProfessor(professorId: number) {
 
   return exams;
 }
+
+export async function getExamsFromClass(classId: number) {
+  const exams = (
+    await getRepository(Exam).find({
+      where: { classId },
+    })
+  ).map((exam) => exam.getExam());
+
+  return exams;
+}
