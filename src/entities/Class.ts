@@ -28,8 +28,7 @@ export default class Class {
     return {
       id: this.id,
       name: this.name,
-      year: this.year,
-      // classToProfessors: this.classToProfessor,
+      year: this.year.name,
     };
   }
 }
