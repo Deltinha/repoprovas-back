@@ -36,3 +36,13 @@ export async function examBodyValidation(exam: any) {
     throw new NotFoundError('exam type does not exist');
   }
 }
+
+export async function getExamsFromProfessor(professorId: number) {
+  const exams = (
+    await getRepository(Exam).find({
+      where: { professorId },
+    })
+  ).map((exam) => exam.getExam());
+
+  return exams;
+}
