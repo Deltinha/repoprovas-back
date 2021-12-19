@@ -44,7 +44,7 @@ export default class Exam {
 
   getExam() {
     return {
-      examName: this.name,
+      name: this.name,
       link: this.link,
       type: this.type.name,
       class: this.class.name,
