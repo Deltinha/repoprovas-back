@@ -97,10 +97,10 @@ ALTER SEQUENCE public.classes_professors_id_seq OWNED BY public.classes_professo
 CREATE TABLE public.exams (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
-    class_id integer NOT NULL,
-    professor_id integer NOT NULL,
     type_id integer NOT NULL,
-    link text NOT NULL
+    link text NOT NULL,
+    class_id integer NOT NULL,
+    professor_id integer NOT NULL
 );
 
 
@@ -126,6 +126,41 @@ ALTER TABLE public.exams_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE public.exams_id_seq OWNED BY public.exams.id;
+
+
+--
+-- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.migrations (
+    id integer NOT NULL,
+    "timestamp" bigint NOT NULL,
+    name character varying NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.migrations_id_seq OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 --
@@ -252,6 +287,13 @@ ALTER TABLE ONLY public.exams ALTER COLUMN id SET DEFAULT nextval('public.exams_
 
 
 --
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
+
+--
 -- Name: professors id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -328,7 +370,17 @@ COPY public.classes_professors (id, class_id, professor_id) FROM stdin;
 -- Data for Name: exams; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.exams (id, name, class_id, professor_id, type_id, link) FROM stdin;
+COPY public.exams (id, name, type_id, link, class_id, professor_id) FROM stdin;
+33	2016.1	4	https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf	6	11
+34	2016.1	1	https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf	3	9
+\.
+
+
+--
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.migrations (id, "timestamp", name) FROM stdin;
 \.
 
 
@@ -396,7 +448,14 @@ SELECT pg_catalog.setval('public.classes_professors_id_seq', 26, true);
 -- Name: exams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.exams_id_seq', 1, false);
+SELECT pg_catalog.setval('public.exams_id_seq', 54, true);
+
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.migrations_id_seq', 1, true);
 
 
 --
@@ -418,6 +477,14 @@ SELECT pg_catalog.setval('public.types_id_seq', 4, true);
 --
 
 SELECT pg_catalog.setval('public.years_id_seq', 6, true);
+
+
+--
+-- Name: migrations PK_8c82d7f526340ab734260ea46be; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT "PK_8c82d7f526340ab734260ea46be" PRIMARY KEY (id);
 
 
 --
