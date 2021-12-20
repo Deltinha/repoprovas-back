@@ -3,6 +3,7 @@ import ClassToProfessor from '../entities/ClassToProfessor';
 import Exam from '../entities/Exam';
 import Type from '../entities/Type';
 import NotFoundError from '../errors/NotFoundError';
+import { examSchema } from '../schemas/examSchema';
 
 export async function uploadExam(exam: any) {
   await getRepository(Exam).insert(exam);
@@ -18,12 +19,17 @@ export async function examBodyValidation(exam: any) {
   )
     throw new SyntaxError('missing property in request body');
 
-  // joi aqui
-  const classProfessor = await getRepository(ClassToProfessor).findOne({
+  const validation = examSchema.validate(exam);
+
+  if (validation?.error) {
+    throw new SyntaxError();
+  }
+
+  const classToProfessor = await getRepository(ClassToProfessor).findOne({
     where: { classId: exam.classId, professorId: exam.professorId },
   });
 
-  if (!classProfessor)
+  if (!classToProfessor)
     throw new NotFoundError(
       'given combination of professor and class does not exists'
     );
