@@ -28,7 +28,7 @@ export default class Class {
   year: Year;
 
   @OneToMany(() => Exam, (exam) => exam.class)
-  exams: Exam;
+  exams: Promise<Exam[]>;
 
   @ManyToMany(() => Professor, (professor) => professor.id, { eager: true })
   @JoinTable({
@@ -50,6 +50,7 @@ export default class Class {
       name: this.name,
       year: this.year.name,
       professors: this.professors,
+      exams: await this.exams,
     };
   }
 }

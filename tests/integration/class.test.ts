@@ -34,12 +34,8 @@ describe('get classes', () => {
           id: expect.any(Number),
           name: expect.any(String),
           year: expect.any(String),
-          professors: expect.arrayContaining([
-            expect.objectContaining({
-              id: expect.any(Number),
-              name: expect.any(String),
-            }),
-          ]),
+          professors: expect.arrayContaining([expect.any(Object)]),
+          exams: expect.any(Array),
         }),
       ])
     );
