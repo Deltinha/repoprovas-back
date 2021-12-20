@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import Exam from '../entities/Exam';
 import * as examService from '../services/examService';
 
 export async function postExam(
@@ -7,9 +8,10 @@ export async function postExam(
   next: NextFunction
 ) {
   try {
-    await examService.examBodyValidation(req.body);
+    const exam: Exam = req.body;
+    await examService.examBodyValidation(exam);
 
-    await examService.uploadExam(req.body);
+    await examService.uploadExam(exam);
 
     return res.sendStatus(201);
   } catch (err) {
