@@ -3,7 +3,7 @@ import { getConnection } from 'typeorm';
 import faker from 'faker';
 import { clearDatabase, populateDatabase } from '../utils/database';
 import app, { init } from '../../src/app';
-import createExamBody from './factories/examFactory';
+import { createExamDB, createExamBody } from './factories/examFactory';
 
 beforeAll(async () => {
   await init();
@@ -20,7 +20,7 @@ afterAll(async () => {
 
 const agent = supertest(app);
 
-describe('post /exams', () => {
+describe('post exam', () => {
   it('should answer with status 201', async () => {
     const exam = await createExamBody();
 
@@ -52,5 +52,49 @@ describe('post /exams', () => {
 
     const response = await agent.post('/exams').send(exam);
     expect(response.status).toBe(404);
+  });
+});
+
+describe('get exams', () => {
+  it('should answer with status 200', async () => {
+    const response = await agent.get('/exams');
+    expect(response.status).toBe(200);
+  });
+
+  it('should return exams with expected body', async () => {
+    await createExamDB();
+
+    const response = await agent.get('/exams');
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: expect.any(String),
+          link: expect.any(String),
+          type: expect.any(String),
+          class: expect.any(String),
+          professor: expect.any(String),
+          year: expect.any(String),
+        }),
+      ])
+    );
+  });
+});
+
+describe('get exam types', () => {
+  it('should answer with status 200', async () => {
+    const response = await agent.get('/exams/types');
+    expect(response.status).toBe(200);
+  });
+
+  it('should return exam types with expected body', async () => {
+    const response = await agent.get('/exams/types');
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
+          name: expect.any(String),
+        }),
+      ])
+    );
   });
 });

@@ -19,17 +19,11 @@ export async function clearDatabase() {
 export async function populateDatabase() {
   let professorId: number;
   let yearId: number;
-  let typeId: number;
   let classId: number;
-  let classToProfessorId: number;
 
-  await getRepository(Type)
-    .insert({
-      name: faker.random.word(),
-    })
-    .then((result) => {
-      typeId = result.identifiers[0].id;
-    });
+  await getRepository(Type).insert({
+    name: faker.random.word(),
+  });
 
   await getRepository(Year)
     .insert({
@@ -56,14 +50,10 @@ export async function populateDatabase() {
       classId = result.identifiers[0].id;
     });
 
-  await getRepository(ClassToProfessor)
-    .insert({
-      professorId,
-      classId,
-    })
-    .then((result) => {
-      classToProfessorId = result.identifiers[0].id;
-    });
+  await getRepository(ClassToProfessor).insert({
+    professorId,
+    classId,
+  });
 }
 
 export async function getRandomClassProfessorId() {
