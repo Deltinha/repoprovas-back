@@ -22,3 +22,16 @@ export async function postExam(
     return next(err);
   }
 }
+
+export async function getExamTypes(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const types = await examService.getExamTypes();
+    return res.send(types).status(200);
+  } catch (err) {
+    return next(err);
+  }
+}

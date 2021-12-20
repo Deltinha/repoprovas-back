@@ -15,4 +15,6 @@ router.get('/', async (req: Request, res: Response) => {
   return res.send(exams).status(200);
 });
 
+router.get('/types', examController.getExamTypes);
+
 export default router;

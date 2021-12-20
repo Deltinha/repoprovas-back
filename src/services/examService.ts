@@ -56,3 +56,7 @@ export async function getExamsFromClass(classId: number) {
 
   return exams;
 }
+
+export async function getExamTypes() {
+  return getRepository(Type).find();
+}
