@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { getRandomClassProfessorId, getRandomType } from '../utils/database';
+import { getRandomClassProfessorId, getRandomType } from '../../utils/database';
 
 export default async function createExamBody() {
   const classProfessor = await getRandomClassProfessorId();

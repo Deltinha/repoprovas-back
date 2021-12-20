@@ -20,6 +20,9 @@ export default class Class {
   @Column()
   name: string;
 
+  @Column({ name: 'year_id' })
+  yearId: number;
+
   @OneToOne(() => Year, { eager: true })
   @JoinColumn({ name: 'year_id' })
   year: Year;
