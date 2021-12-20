@@ -5,11 +5,11 @@ import Type from '../entities/Type';
 import NotFoundError from '../errors/NotFoundError';
 import { examSchema } from '../schemas/examSchema';
 
-export async function uploadExam(exam: any) {
+export async function uploadExam(exam: Exam) {
   await getRepository(Exam).insert(exam);
 }
 
-export async function examBodyValidation(exam: any) {
+export async function examBodyValidation(exam: Exam) {
   if (
     !exam.name ||
     !exam.classId ||
