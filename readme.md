@@ -72,11 +72,11 @@ You can get all available exam types by using this endpoint.
   {
     "id": 1,
     "name": "AV1",
-	},
+  },
   {
     "id": 2,
     "name": "AV2",
-	}, ...
+  }, ...
 ]
 ```
 
@@ -86,7 +86,7 @@ You can get all registered professors and its registered exams quantity by using
 
 ```json
 [
-	{
+  {
   	"id": 1,
     "name": "Dewey Finn",
     "examsQty": 13,
@@ -105,14 +105,14 @@ You can get all registered exams from a given professor by using this endpoint.
 
 ```json
 [
-	{
+  {
     "name": "2020.1",
     "link": "https://examlink.pdf",
     "type": "Final",
     "class": "Music",
     "professor": "Dewey Finn",
     "year": "2º",
-	}, ...
+  }, ...
 ]
 ```
 
@@ -128,21 +128,21 @@ By using this endpoint, you can get all the classes including the professors in 
     "year": "2º",
     "professors": [
     	{
-        "id": 1,
-        "name": "Dewey Finn"
+          "id": 1,
+          "name": "Dewey Finn"
     	}, ...
     ],
     "exams": [
     	{
-        "id": 56,
-        "name": "2020.1",
-        "link": "https://examlink.pdf",
-        "typeId": 4,
-        "professorId": 1,
-        "classId": 1
+          "id": 56,
+          "name": "2020.1",
+          "link": "https://examlink.pdf",
+          "typeId": 4,
+          "professorId": 1,
+          "classId": 1
     	}, ...
     ]
-	}, ...
+  }, ...
 ]
 ```
 
@@ -152,13 +152,13 @@ You can get all the exams from a specific class by using this endpoint.
 
 ```json
 [
-	{
+  {
     "name": "2020.1",
     "link": "https://examlink.pdf",
     "type": "Final",
     "class": "Music",
     "professor": "Dewey Finn",
     "year": "2º"
-	}, ...
+  }, ...
 ]
 ```
