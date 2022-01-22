@@ -55,11 +55,11 @@ You can insert a exam by using this endpoint. The body contents should be a JSON
 
 ```json
 {
-  "name": '2020.1',
+  "name": "2020.1",
   "professorId": "10",
   "classId": "1",
   "typeId": "10",
-  "link": `https://examlink.pdf`,
+  "link": "https://examlink.pdf",
 }
 ```
 
@@ -69,7 +69,7 @@ You can get all available exam types by using this endpoint.
 
 ```json
 [
-    {
+  {
 		"id": 1,
 		"name": "AV1",
 	},
@@ -107,11 +107,11 @@ You can get all registered exams from a given professor by using this endpoint.
 [
 	{
 		"name": "2020.1",
-      	"link": "https://examlink.pdf",
-      	"type": "Final",
-      	"class": "Music",
-      	"professor": "Dewey Finn",
-      	"year": "2º",
+    "link": "https://examlink.pdf",
+    "type": "Final",
+    "class": "Music",
+    "professor": "Dewey Finn",
+    "year": "2º",
 	}, ...
 ]
 ```
