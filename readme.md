@@ -1,6 +1,6 @@
 ## repoprovas API
 
-Backend of repoprovas, an application where you can share past exams. 
+Backend of repoprovas, an application where you can share past exams.
 
 ### Technologies
 
@@ -59,7 +59,7 @@ You can insert a exam by using this endpoint. The body contents should be a JSON
   "professorId": "10",
   "classId": "1",
   "typeId": "10",
-  "link": "https://examlink.pdf",
+  "link": "https://examlink.pdf"
 }
 ```
 
@@ -69,13 +69,13 @@ You can get all available exam types by using this endpoint.
 
 ```json
 [
-  {	
-		"id": 1,
-		"name": "AV1",
+  {
+    "id": 1,
+    "name": "AV1",
 	},
   {
-		"id": 2,
-		"name": "AV2",
+    "id": 2,
+    "name": "AV2",
 	}, ...
 ]
 ```
@@ -106,7 +106,7 @@ You can get all registered exams from a given professor by using this endpoint.
 ```json
 [
 	{
-		"name": "2020.1",
+    "name": "2020.1",
     "link": "https://examlink.pdf",
     "type": "Final",
     "class": "Music",
@@ -123,25 +123,25 @@ By using this endpoint, you can get all the classes including the professors in 
 ```json
 [
   {
-		"id": 1,
-		"name": "Music",
-		"year": "2º",
-		"professors": [
-			{
-				"id": 1,
-				"name": "Dewey Finn"
-			}, ...
-		],
-		"exams": [
-			{
-				"id": 56,
-				"name": "2020.1",
-				"link": "https://examlink.pdf",
-				"typeId": 4,
-				"professorId": 1,
-				"classId": 1
-			}, ...
-		]
+    "id": 1,
+    "name": "Music",
+    "year": "2º",
+    "professors": [
+    	{
+        "id": 1,
+        "name": "Dewey Finn"
+    	}, ...
+    ],
+    "exams": [
+    	{
+        "id": 56,
+        "name": "2020.1",
+        "link": "https://examlink.pdf",
+        "typeId": 4,
+        "professorId": 1,
+        "classId": 1
+    	}, ...
+    ]
 	}, ...
 ]
 ```
@@ -153,13 +153,12 @@ You can get all the exams from a specific class by using this endpoint.
 ```json
 [
 	{
-		"name": "2020.1",
-		"link": "https://examlink.pdf",
-		"type": "Final",
-		"class": "Music",
-		"professor": "Dewey Finn",
-		"year": "2º"
+    "name": "2020.1",
+    "link": "https://examlink.pdf",
+    "type": "Final",
+    "class": "Music",
+    "professor": "Dewey Finn",
+    "year": "2º"
 	}, ...
 ]
 ```
-
