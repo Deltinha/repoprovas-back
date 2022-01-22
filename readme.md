@@ -69,11 +69,11 @@ You can get all available exam types by using this endpoint.
 
 ```json
 [
-  {
+  {	
 		"id": 1,
 		"name": "AV1",
 	},
-    {
+  {
 		"id": 2,
 		"name": "AV2",
 	}, ...
@@ -86,16 +86,16 @@ You can get all registered professors and its registered exams quantity by using
 
 ```json
 [
-    {
-      id: 1,
-      name: "Dewey Finn",
-      examsQty: 13,
-    },
-    {
-      id: 2,
-      name: "Henry Barthes",
-      examsQty: 15,
-    }, ...
+	{
+  	"id": 1,
+    "name": "Dewey Finn",
+    "examsQty": 13,
+  },
+  {
+    "id": 2,
+    "name": "Henry Barthes",
+    "examsQty": 15,
+  }, ...
 ]
 ```
 
@@ -122,7 +122,7 @@ By using this endpoint, you can get all the classes including the professors in 
 
 ```json
 [
-    {
+  {
 		"id": 1,
 		"name": "Music",
 		"year": "2º",
