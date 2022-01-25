@@ -1,6 +1,6 @@
 ## repoprovas API
 
-Backend of repoprovas, an application where you can share past exams.
+Backend of repoprovas. An application where you can share past exams.
 
 ### Technologies
 
